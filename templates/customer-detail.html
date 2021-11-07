@@ -1,0 +1,111 @@
+{% extends "basic.html" %} {% block title %} Add Project Detail{% endblock %} {% block content %}
+
+<div class="content-wrapper ">
+    <div class="container pt-5">
+        <div class="col-sm-11 text-white bg-white px-3 py-3 mx-auto d-block  shadow">
+            <p class="dashboard-heading-1">
+                Add Project Detail </p>
+
+
+            {% if error|length > 1 %}
+            <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                <span class="badge badge-pill badge-danger">Alert </span> {{ error }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            {% endif %} {% if message|length > 1 %}
+            <div class="alert  alert-success alert-dismissible fade show text-center" role="alert">
+                <span class="badge badge-pill badge-success">Success </span> {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            {% endif %}
+
+
+            <form action="/project-detail" method="POST">
+                <div class="row">
+                    <div class="mb-3 col-sm-6">
+                        <label for="exampleInputEmail1" class="form-label"> Client Name </label>
+
+                        <select class="form-control col" name="name" id="name" aria-label="Default select example" onchange="changeSubCategory(this.value);">   
+                            <option selected disabled>Select Client Name</option>
+                            {% for i in data %}
+                            <option value="{{i[0]}} ">{{i[1]}}</option>
+                            {% endfor %}  
+                          </select>
+
+
+
+                    </div>
+
+
+
+                    <div class="mb-3 col-sm-6">
+                        <label for="exampleInputEmail1" class="form-label"> Project Name </label>
+                        <input name="projectname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                    </div>
+
+
+                    <div class="mb-3 col-sm-6">
+                        <label for="exampleInputEmail1" class="form-label"> Services</label>
+
+                        <select class="form-control" name="service">
+                            <option selected disabled>Select Services</option>
+                          <option>Web Development</option>
+                          <option>Software Development </option>
+                          <option>CMS Development </option>
+                          <option>Mobile App Development </option>
+                          <option>Graphics Design </option>
+                          <option>Domain & Hosting </option>
+                      </select>
+
+                    </div>
+
+                    <div class="mb-3 col-sm-6">
+                        <label for="exampleInputEmail1" class="form-label"> Extra </label>
+                        <input name="extra" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+
+                    <div class="mb-3 col-sm-6">
+                        <label for="exampleInputEmail1" class="form-label"> Project Price </label>
+                        <input name="projectprice" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+
+
+
+
+                    <div class="mb-3 col-sm-6">
+                        <label for="exampleInputEmail1" class="form-label"> Start Date</label>
+                        <input name="startdate" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                    </div>
+
+                    <div class="mb-3 col-sm-6">
+                        <label for="exampleInputEmail1" class="form-label"> End Date </label>
+                        <input name="enddate" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                    </div>
+
+                    <div class="mb-3 col-sm-6">
+                        <label for="exampleInputEmail1" class="form-label"> Project Detail </label>
+                        <textarea name="detail" type="text" class="form-control"></textarea>
+
+
+
+                    </div>
+
+
+
+
+
+                </div>
+                <button type="submit" class="btn btn-primary py-2 px-2 mx-auto d-block w-25"> Add </button>
+
+
+            </form>
+
+
+            {% endblock %}

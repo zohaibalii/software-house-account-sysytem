@@ -1,0 +1,46 @@
+{% extends "basic.html" %} {% block title %} Add City {% endblock %} {% block content %}
+
+<div class="content-wrapper ">
+    <div class="container pt-5">
+        <div class="col-sm-11 text-white bg-white px-3 py-3 mx-auto d-block  shadow">
+            <p class="dashboard-heading-1">
+                Add Product</p>
+
+
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-primary text-center" role="alert">
+                <p>{{ message }}</p>
+            </div>
+            {% endfor %}
+
+
+
+            <form action="/add-product" method="POST">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"> Company Name</label>
+                    <input name="company" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label"> Product Type</label>
+                    <input name="ptype" type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"> Product Name</label>
+                    <input name="pname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label"> Product Type</label>
+                    <input name="ptype" type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Product Price</label>
+                    <input name="pprice" type="text" class="form-control" id="exampleInputPassword1">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+
+            {% endblock %}

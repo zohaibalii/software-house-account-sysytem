@@ -1,0 +1,95 @@
+{% extends "basic.html" %} {% block head %} {{ super() }} {% endblock %} {% block content %} {% block title %} {% endblock %}
+<div class="content-wrapper ">
+    <div class="container pt-5">
+        <div class="col-sm-11 text-white bg-white px-3 py-3 mx-auto d-block  shadow">
+            <p class="dashboard-heading-1">
+                Add Data</p>
+
+            {% for message in get_flashed_messages() %}
+            <div class="alert alert-success text-center" role="alert">
+                <p>{{ message }}</p>
+            </div>
+            {% endfor %}
+
+
+
+            <form method="POST" action="/calls-edit" enctype="multipart/form-data">
+                <div id="form">
+                    <div id="S1">
+                        <div class="row mt-1 ">
+
+
+                            <div class="mb-3 col-sm-6">
+                                <label for="exampleInputEmail1" class="form-label">Name</label>
+                                <input value="{{calls[1]}}" name="name" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                            </div>
+
+
+                            <div class="mb-3 col-sm-6">
+                                <label for="exampleInputEmail1" class="form-label">Phone</label>
+                                <input value="{{calls[2]}}" name="phone" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                            </div>
+
+
+
+
+
+                            <div class="mb-3 col-sm-6">
+                                <label for="exampleInputEmail1" class="form-label">country</label>
+                                <input value="{{calls[4]}}" name="country" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                            </div>
+
+
+                            <div class="mb-3 col-sm-6">
+                                <label for="exampleInputEmail1" class="form-label">City</label>
+                                <input value="{{calls[5]}}" name="city" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                            </div>
+
+
+                            <div class="mb-3 col-sm-6">
+                                <label for="exampleInputEmail1" class="form-label">Date</label>
+                                <input value="{{calls[6]}}" name="date" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                            </div>
+
+
+
+
+                            <div class="mb-3 col-sm-6">
+                                <label for="floatingTextarea2">Reason</label>
+                                <textarea name="reason" class="form-control" placeholder="Describe Maintenance Detail Here" id="floatingTextarea2" style="height: 100px">{{calls[3]}} </textarea>
+
+
+                            </div>
+                            <input hidden value="{{calls[0]}}" name="sno" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                            <button type="submit" class="btn btn-primary">Edit</button>
+
+
+
+
+
+
+                            <!-- 
+</div>
+<button type="submit " class="mt-2 dashboard-btn-1 mx-auto d-block">Add Hotel</button> -->
+
+
+                        </div>
+                    </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    {% endblock %}

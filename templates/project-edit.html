@@ -1,0 +1,135 @@
+{% extends "basic.html" %} {% block title %} Add Project Detail{% endblock %} {% block content %}
+
+<div class="content-wrapper ">
+    <div class="container pt-5">
+        <div class="col-sm-11 text-white bg-white px-3 py-3 mx-auto d-block  shadow">
+            <p class="dashboard-heading-1">
+                Edit Project Detail</p>
+
+
+            {% if error|length > 1 %}
+            <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                <span class="badge badge-pill badge-danger">Alert </span> {{ error }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            {% endif %} {% if message|length > 1 %}
+            <div class="alert  alert-success alert-dismissible fade show text-center" role="alert">
+                <span class="badge badge-pill badge-success">Success </span> {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            {% endif %}
+
+
+            <form action="/project-edit" method="POST">
+                <div class="row">
+                    <div class="row">
+                        <!-- <div class="mb-3 col-sm-6">
+                            <label for="exampleInputEmail1" class="form-label"> Client Name </label>
+
+                            <select class="form-control col" name="name" id="name" aria-label="Default select example">   
+                           
+                            {% for value in data2 %}
+                            <option value="{{value[0]}}" {% if value == selectvalue %} selected>{{value[1]}}</option>
+                            {% else %}
+                            <option value="{{value[0]}}">{{value[1]}}</option>
+                            {% endif %} 
+                            {% endfor %}  
+                          </select>
+                        </div> -->
+
+
+                        <select name="name" class="custom-select" id="creatorcategory">
+                            {% for cat in data2 %}
+                            {% if cat[0]|int == data[9]|int %}
+                                  <option value="{{cat[0]}}" selected>{{cat[1]}}</option>
+                            {% else %}
+                                  <option value="{{cat[0]}}">{{cat[1]}}</option>
+                            {% endif %}
+                            {% endfor %}
+                  
+                  
+                    </select>
+
+                        <!-- 
+                        <select name="editCategory" class="custom-select" name="editCategory" id="editCategory" required>
+                            {%for value in allcategories1 %}
+                            <option value="{{value[0]}}" name="editCategory" {%if value== selectvalue%}selected{%endif%}>
+                                {{value[1]}}
+                            </option>
+                            {%endfor%}
+                        </select> -->
+
+
+
+                        <div class="mb-3 col-sm-6">
+                            <label for="exampleInputEmail1" class="form-label"> Project Name </label>
+                            <input value="{{data[0]}}" name="projectname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+
+
+                        <div class="mb-3 col-sm-6">
+                            <label for="exampleInputEmail1" class="form-label"> Services</label>
+
+                            <select class="form-control" name="service">
+                            <option  disabled>Select Services</option>
+                          <option {% if data[1] == "Web Development" %} selected {% endif %}>Web Development</option>
+                          <option {% if data[1] == "Software Development" %} selected {% endif %}>Software Development </option>
+                          <option {% if data[1] == "CMS Development" %} selected {% endif %}>CMS Development </option>
+                          <option {% if data[1] == "Mobile App Development" %} selected {% endif %}>Mobile App Development </option>
+                          <option {% if data[1] == "Graphics Design" %} selected {% endif %}>Graphics Design </option>
+                          <option {% if data[1] == "Domain & Hosting" %} selected {% endif %}>Domain & Hosting </option>
+                      </select>
+
+                        </div>
+
+                        <div class="mb-3 col-sm-6">
+                            <label for="exampleInputEmail1" class="form-label"> Extra </label>
+                            <input value="{{data[2]}}" name="extra" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+
+                        <div class="mb-3 col-sm-6">
+                            <label for="exampleInputEmail1" class="form-label"> Project Price </label>
+                            <input value="{{data[3]}}" name="projectprice" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+
+
+
+
+                        <div class="mb-3 col-sm-6">
+                            <label for="exampleInputEmail1" class="form-label"> Start Date</label>
+                            <input value="{{data[4]}}" name="startdate" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                        </div>
+
+                        <div class="mb-3 col-sm-6">
+                            <label for="exampleInputEmail1" class="form-label"> End Date </label>
+                            <input value="{{data[5]}}" name="enddate" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                        </div>
+
+                        <div class="mb-3 col-sm-6">
+                            <label for="exampleInputEmail1" class="form-label"> Project Detail </label>
+                            <textarea name="detail" type="text" class="form-control">{{data[6]}} </textarea>
+
+
+
+                        </div>
+
+                        <input hidden value="{{data[8]}}" name="sno" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+
+
+
+
+                    </div>
+                    <button type="submit" class="btn btn-primary py-2 px-2 mx-auto d-block w-25"> Edit </button>
+
+
+            </form>
+
+
+            {% endblock %}

@@ -1,0 +1,81 @@
+{% extends "basic.html" %} {% block title %} Add Project Detail{% endblock %} {% block content %}
+
+<div class="content-wrapper ">
+    <div class="container pt-5">
+        <div class="col-sm-11 text-white bg-white px-3 py-3 mx-auto d-block  shadow">
+            <p class="dashboard-heading-1">
+                Add Maintenance Detail Here </p>
+
+
+            {% if error|length > 1 %}
+            <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+                <span class="badge badge-pill badge-danger">Alert </span> {{ error }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            {% endif %} {% if message|length > 1 %}
+            <div class="alert  alert-success alert-dismissible fade show text-center" role="alert">
+                <span class="badge badge-pill badge-success">Success </span> {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            {% endif %}
+
+
+            <form action="/maintenance-add" method="POST">
+                <div class="row">
+                    <div class="mb-3 col-sm-6">
+                        <label for="exampleInputEmail1" class="form-label"> Client Name </label>
+
+                        <select class="form-control col" name="name" id="name" aria-label="Default select example">   
+                            <option selected disabled>Select Client Name</option>
+                            {% for i in data %}
+                            <option value="{{i[0]}} ">{{i[1]}}</option>
+                            {% endfor %}  
+                          </select>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="mb-3 col-sm-6">
+                        <label for="exampleInputEmail1" class="form-label">Project Name</label>
+                        <input name="pname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                    </div>
+
+
+
+                    <div class="mb-3 col-sm-6">
+                        <label for="exampleInputEmail1" class="form-label"> Price </label>
+                        <input name="price" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                    </div>
+
+                    <div class="mb-3 col-sm-6">
+                        <label for="floatingTextarea2">maintenance Detail</label>
+                        <textarea name="maintenance" class="form-control" placeholder="Describe Maintenance Detail Here" id="floatingTextarea2" style="height: 100px"></textarea>
+
+
+                    </div>
+
+
+
+
+
+                </div>
+                <button type="submit" class="btn btn-primary py-2 px-2 mx-auto d-block w-25"> Add </button>
+
+
+            </form>
+
+
+            {% endblock %}
